@@ -20,7 +20,7 @@ const RootStack = createNativeStackNavigator({
     Camera: {
       screen: CameraScreen,
       options: {
-        orientation: 'landscape_left',
+        // orientation: 'landscape_left',
       },
     },
     Photo: {
