@@ -32,7 +32,9 @@ export function CameraScreen() {
   const [enableDepthStream, setEnableDepthStream] = useState(false)
 
   const devices = useCameraDevices()
-  const defaultDevice = devices[0]
+  const defaultDevice =
+    devices.find((currentDevice) => currentDevice.position === 'front') ??
+    devices[0]
   const [device, setDevice] = useState(defaultDevice)
 
   useEffect(() => {
@@ -233,6 +235,7 @@ export function CameraScreen() {
         isActive={isAppActive && isScreenFocused}
         device={device}
         outputs={[photoOutput]}
+        orientationSource="interface"
         mirrorMode={device.position === 'front' ? 'on' : 'off'}
         constraints={
           [
